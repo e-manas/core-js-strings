@@ -403,7 +403,7 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  if (typeof str !== 'string') throw new Error('Input must be a string!');
+  if (typeof str !== 'string') throw new Error('Argument must be a string!');
   return str
     .split('')
     .map((char) =>
@@ -425,8 +425,11 @@ function invertCase(str) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  if (typeof firstName !== 'string' || typeof lastName !== 'string') {
+    throw new Error('Both arguments must be strings!');
+  }
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -439,8 +442,11 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  if (typeof value !== 'string') {
+    throw new Error('Argument must be a string!');
+  }
+  return value.replace(/^Hello, |!$/g, '');
 }
 
 /**
